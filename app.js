@@ -4,7 +4,23 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("Node.js + Express のテストページです。");
+  const currentTime = new Date().toLocaleString("ja-JP", {
+    timeZone: "Asia/Tokyo",
+  });
+
+  res.send(`
+    <!doctype html>
+    <html lang="ja">
+      <head>
+        <meta charset="utf-8">
+        <title>Node.js + Express</title>
+      </head>
+      <body>
+        <h1>Node.js + Express のテストページです。</h1>
+        <p>現在時刻: ${currentTime}</p>
+      </body>
+    </html>
+  `);
 });
 
 app.listen(port, () => {
